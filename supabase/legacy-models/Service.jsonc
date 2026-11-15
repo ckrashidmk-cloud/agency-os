@@ -1,0 +1,61 @@
+{
+  "name": "Service",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "design",
+        "development",
+        "marketing",
+        "social_media",
+        "consulting",
+        "other"
+      ],
+      "default": "other"
+    },
+    "pricing_type": {
+      "type": "string",
+      "enum": [
+        "fixed",
+        "hourly"
+      ],
+      "default": "fixed"
+    },
+    "default_amount": {
+      "type": "number"
+    },
+    "description": {
+      "type": "string"
+    },
+    "is_active": {
+      "type": "boolean",
+      "default": true
+    }
+  },
+  "required": [
+    "name",
+    "pricing_type"
+  ],
+  "rls": {
+    "read": {},
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

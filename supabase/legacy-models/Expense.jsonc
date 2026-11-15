@@ -1,0 +1,79 @@
+{
+  "name": "Expense",
+  "type": "object",
+  "properties": {
+    "category": {
+      "type": "string",
+      "default": "other"
+    },
+    "description": {
+      "type": "string"
+    },
+    "amount": {
+      "type": "number"
+    },
+    "date_incurred": {
+      "type": "string",
+      "format": "date"
+    },
+    "receipt_file_uri": {
+      "type": "string"
+    },
+    "logged_by": {
+      "type": "string"
+    },
+    "project_id": {
+      "type": "string"
+    },
+    "notes": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "approved",
+        "reimbursed",
+        "rejected"
+      ],
+      "default": "pending"
+    }
+  },
+  "required": [
+    "category",
+    "amount",
+    "date_incurred"
+  ],
+  "rls": {
+    "read": {
+      "$or": [
+        {
+          "data.logged_by": "{{user.id}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "create": {},
+    "update": {
+      "$or": [
+        {
+          "data.logged_by": "{{user.id}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

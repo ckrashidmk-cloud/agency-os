@@ -1,0 +1,57 @@
+{
+  "name": "WorkflowStage",
+  "type": "object",
+  "properties": {
+    "workflow_id": {
+      "type": "string"
+    },
+    "stage_name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "color": {
+      "type": "string",
+      "default": "#6366f1"
+    },
+    "order_index": {
+      "type": "number"
+    },
+    "requires_approval_from_role": {
+      "type": "string",
+      "enum": [
+        "none",
+        "manager",
+        "admin"
+      ],
+      "default": "none"
+    },
+    "auto_assign_to": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "workflow_id",
+    "stage_name",
+    "order_index"
+  ],
+  "rls": {
+    "read": {},
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

@@ -1,0 +1,93 @@
+{
+  "name": "Client",
+  "type": "object",
+  "properties": {
+    "company_name": {
+      "type": "string"
+    },
+    "contact_person": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "whatsapp_number": {
+      "type": "string"
+    },
+    "address": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "lead",
+        "active",
+        "inactive",
+        "churned"
+      ],
+      "default": "active"
+    },
+    "industry": {
+      "type": "string"
+    },
+    "website": {
+      "type": "string"
+    },
+    "budget_type": {
+      "type": "string",
+      "enum": [
+        "none",
+        "monthly",
+        "project",
+        "hourly"
+      ],
+      "default": "none"
+    },
+    "budget_amount": {
+      "type": "number"
+    },
+    "notes": {
+      "type": "string"
+    },
+    "logo_url": {
+      "type": "string"
+    },
+    "monthly_content_target": {
+      "type": "number",
+      "default": 0
+    },
+    "supported_platforms": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "account_manager_id": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "company_name"
+  ],
+  "rls": {
+    "read": {},
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

@@ -1,0 +1,25 @@
+[auth]
+enabled = true
+site_url = "http://localhost:5174"
+additional_redirect_urls = [
+  "http://localhost:5174/**",
+  "http://127.0.0.1:5174/**",
+]
+
+[functions.stripe-webhook]
+verify_jwt = false
+
+[functions.manage-auth-settings]
+verify_jwt = false
+
+[functions.manage-staff-invitation]
+verify_jwt = false
+
+[functions.manage-customer-invitation]
+verify_jwt = false
+
+[functions.manage-email-settings]
+verify_jwt = false
+
+[functions.manage-resend-webhook]
+verify_jwt = false

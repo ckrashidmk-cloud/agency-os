@@ -1,0 +1,143 @@
+{
+  "name": "SocialPost",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string"
+    },
+    "client_id": {
+      "type": "string"
+    },
+    "publish_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "publish_time": {
+      "type": "string",
+      "description": "Local scheduled publishing time in HH:mm format"
+    },
+    "timezone": {
+      "type": "string"
+    },
+    "platform": {
+      "type": "string",
+      "enum": [
+        "instagram_post",
+        "instagram_reel",
+        "facebook",
+        "tiktok",
+        "youtube",
+        "linkedin",
+        "twitter"
+      ],
+      "default": "instagram_post"
+    },
+    "caption": {
+      "type": "string"
+    },
+    "audio_link": {
+      "type": "string"
+    },
+    "cover_image_url": {
+      "type": "string"
+    },
+    "hashtag_groups": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "internal_review",
+        "client_review",
+        "scheduled",
+        "published",
+        "needs_edit"
+      ],
+      "default": "draft"
+    },
+    "campaign_id": {
+      "type": "string"
+    },
+    "whiteboard_link": {
+      "type": "string"
+    },
+    "assigned_to": {
+      "type": "string"
+    },
+    "assigned_copywriter": {
+      "type": "string"
+    },
+    "assigned_designer": {
+      "type": "string"
+    },
+    "account_manager": {
+      "type": "string"
+    },
+    "content_format": {
+      "type": "string"
+    },
+    "creative_deadline": {
+      "type": "string",
+      "format": "date"
+    },
+    "approval_deadline": {
+      "type": "string",
+      "format": "date"
+    },
+    "client_feedback": {
+      "type": "string"
+    },
+    "workflow_stage": {
+      "type": "string",
+      "enum": [
+        "planned",
+        "writing",
+        "design",
+        "internal_review",
+        "client_approval",
+        "approved",
+        "scheduled",
+        "published",
+        "revisions",
+        "rejected",
+        "failed"
+      ],
+      "default": "planned"
+    },
+    "creative_brief": {
+      "type": "string"
+    },
+    "design_instructions": {
+      "type": "string"
+    },
+    "reference_links": {
+      "type": "string"
+    },
+    "internal_notes": {
+      "type": "string"
+    },
+    "published_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "created_by": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "client_id",
+    "publish_date",
+    "platform"
+  ],
+  "rls": {
+    "read": {},
+    "create": {},
+    "update": {},
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

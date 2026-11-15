@@ -1,0 +1,119 @@
+{
+  "name": "WorkspaceSettings",
+  "type": "object",
+  "properties": {
+    "workspace_name": {
+      "type": "string"
+    },
+    "agency_email": {
+      "type": "string"
+    },
+    "agency_phone": {
+      "type": "string"
+    },
+    "default_language": {
+      "type": "string",
+      "default": "en-US"
+    },
+    "date_format": {
+      "type": "string",
+      "enum": [
+        "dd MMM yyyy",
+        "MM/dd/yyyy",
+        "yyyy-MM-dd"
+      ],
+      "default": "dd MMM yyyy"
+    },
+    "timezone": {
+      "type": "string",
+      "default": "Asia/Kolkata"
+    },
+    "default_currency": {
+      "type": "string",
+      "default": "INR"
+    },
+    "default_landing_page": {
+      "type": "string",
+      "default": "/"
+    },
+    "enabled_modules_json": {
+      "type": "string"
+    },
+    "logo_url": {
+      "type": "string"
+    },
+    "favicon_url": {
+      "type": "string"
+    },
+    "collapsed_logo_url": {
+      "type": "string"
+    },
+    "login_bg_url": {
+      "type": "string"
+    },
+    "primary_hex": {
+      "type": "string"
+    },
+    "secondary_hex": {
+      "type": "string"
+    },
+    "accent_hex": {
+      "type": "string"
+    },
+    "text_hex": {
+      "type": "string"
+    },
+    "sidebar_text_hex": {
+      "type": "string"
+    },
+    "font_family": {
+      "type": "string",
+      "enum": [
+        "system",
+        "Inter",
+        "Poppins",
+        "Roboto",
+        "Playfair Display"
+      ],
+      "default": "system"
+    },
+    "border_radius": {
+      "type": "string",
+      "enum": [
+        "sharp",
+        "rounded",
+        "pill"
+      ],
+      "default": "rounded"
+    },
+    "theme_mode": {
+      "type": "string",
+      "enum": [
+        "dark",
+        "light"
+      ],
+      "default": "dark"
+    }
+  },
+  "required": [
+    "workspace_name"
+  ],
+  "rls": {
+    "read": {},
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "name": "CustomField",
+  "type": "object",
+  "properties": {
+    "target_table": {
+      "type": "string",
+      "enum": [
+        "Client",
+        "Project",
+        "Task"
+      ],
+      "default": "Task"
+    },
+    "field_name": {
+      "type": "string"
+    },
+    "field_type": {
+      "type": "string",
+      "enum": [
+        "text",
+        "number",
+        "date",
+        "dropdown"
+      ],
+      "default": "text"
+    },
+    "options_json": {
+      "type": "string"
+    },
+    "is_active": {
+      "type": "boolean",
+      "default": true
+    }
+  },
+  "required": [
+    "target_table",
+    "field_name",
+    "field_type"
+  ],
+  "rls": {
+    "read": {},
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

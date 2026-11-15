@@ -1,0 +1,64 @@
+{
+  "name": "StaffSettings",
+  "type": "object",
+  "properties": {
+    "department_names_json": {
+      "type": "string"
+    },
+    "department_heads_json": {
+      "type": "string"
+    },
+    "employee_id_prefix": {
+      "type": "string",
+      "default": "EMP"
+    },
+    "default_department": {
+      "type": "string"
+    },
+    "default_employment_status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "inactive"
+      ],
+      "default": "active"
+    },
+    "default_employment_type": {
+      "type": "string",
+      "enum": [
+        "staff",
+        "freelancer"
+      ],
+      "default": "staff"
+    },
+    "default_working_schedule": {
+      "type": "string"
+    },
+    "default_role": {
+      "type": "string",
+      "enum": [
+        "user",
+        "admin"
+      ],
+      "default": "user"
+    }
+  },
+  "required": [],
+  "rls": {
+    "read": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

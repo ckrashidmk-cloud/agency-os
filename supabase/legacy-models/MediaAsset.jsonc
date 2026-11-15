@@ -1,0 +1,47 @@
+{
+  "name": "MediaAsset",
+  "type": "object",
+  "properties": {
+    "post_id": {
+      "type": "string"
+    },
+    "file_url": {
+      "type": "string"
+    },
+    "asset_type": {
+      "type": "string",
+      "enum": [
+        "image",
+        "video",
+        "reel_cover",
+        "document"
+      ],
+      "default": "image"
+    },
+    "file_name": {
+      "type": "string"
+    },
+    "file_size": {
+      "type": "number"
+    }
+  },
+  "required": [
+    "post_id",
+    "file_url",
+    "asset_type"
+  ],
+  "rls": {
+    "read": {},
+    "create": {},
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

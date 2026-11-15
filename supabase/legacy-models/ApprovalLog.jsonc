@@ -1,0 +1,49 @@
+{
+  "name": "ApprovalLog",
+  "type": "object",
+  "properties": {
+    "post_id": {
+      "type": "string"
+    },
+    "client_id": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "approved",
+        "rejected",
+        "needs_edit"
+      ],
+      "default": "pending"
+    },
+    "client_feedback": {
+      "type": "string"
+    },
+    "approved_by": {
+      "type": "string"
+    },
+    "approval_token": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "post_id",
+    "client_id"
+  ],
+  "rls": {
+    "read": {},
+    "create": {},
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

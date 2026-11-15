@@ -1,0 +1,141 @@
+{
+  "name": "User",
+  "type": "object",
+  "properties": {
+    "role": {
+      "type": "string",
+      "description": "The role of the user in the app",
+      "enum": [
+        "admin",
+        "user"
+      ]
+    },
+    "job_role": {
+      "type": "string",
+      "description": "Job role within the organization",
+      "enum": [
+        "super_admin",
+        "manager",
+        "staff"
+      ]
+    },
+    "designation": {
+      "type": "string"
+    },
+    "employee_id": {
+      "type": "string"
+    },
+    "address": {
+      "type": "string"
+    },
+    "joining_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "reporting_manager_id": {
+      "type": "string"
+    },
+    "work_location": {
+      "type": "string"
+    },
+    "working_schedule": {
+      "type": "string"
+    },
+    "profile_photo_url": {
+      "type": "string"
+    },
+    "assigned_clients_json": {
+      "type": "string"
+    },
+    "assigned_projects_json": {
+      "type": "string"
+    },
+    "invitation_status": {
+      "type": "string",
+      "enum": [
+        "none",
+        "pending",
+        "accepted",
+        "expired"
+      ],
+      "default": "none"
+    },
+    "department": {
+      "type": "string"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "rate_per_hour": {
+      "type": "number"
+    },
+    "base_salary": {
+      "type": "number"
+    },
+    "monthly_salary": {
+      "type": "number"
+    },
+    "monthly_expense_buffer": {
+      "type": "number"
+    },
+    "total_working_hours": {
+      "type": "number",
+      "default": 160
+    },
+    "employment_type": {
+      "type": "string",
+      "enum": [
+        "staff",
+        "freelancer"
+      ],
+      "default": "staff"
+    },
+    "hourly_rate_override": {
+      "type": "number"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "inactive"
+      ],
+      "default": "active"
+    },
+    "employment_status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "inactive",
+        "on_leave"
+      ],
+      "default": "active"
+    }
+  },
+  "required": [
+    "role"
+  ],
+  "rls": {
+    "read": {
+      "$or": [
+        {
+          "id": "{{user.id}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

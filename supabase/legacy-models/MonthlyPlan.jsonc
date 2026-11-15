@@ -1,0 +1,89 @@
+{
+  "name": "MonthlyPlan",
+  "type": "object",
+  "properties": {
+    "client_id": {
+      "type": "string"
+    },
+    "month": {
+      "type": "number"
+    },
+    "year": {
+      "type": "number"
+    },
+    "content_target": {
+      "type": "number",
+      "default": 0
+    },
+    "platform_targets_json": {
+      "type": "string",
+      "description": "JSON object keyed by platform value with monthly target counts"
+    },
+    "formats_json": {
+      "type": "string"
+    },
+    "weekly_distribution_json": {
+      "type": "string"
+    },
+    "important_dates_json": {
+      "type": "string"
+    },
+    "creative_deadline": {
+      "type": "string",
+      "format": "date"
+    },
+    "approval_deadline": {
+      "type": "string",
+      "format": "date"
+    },
+    "assigned_team_json": {
+      "type": "string"
+    },
+    "campaign_ids_json": {
+      "type": "string"
+    },
+    "notes": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "planning",
+        "in_progress",
+        "ready",
+        "completed"
+      ],
+      "default": "planning"
+    },
+    "is_template": {
+      "type": "boolean",
+      "default": false
+    },
+    "template_name": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "client_id",
+    "month",
+    "year"
+  ],
+  "rls": {
+    "read": {},
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "name": "Campaign",
+  "type": "object",
+  "properties": {
+    "client_id": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "start_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "end_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "color": {
+      "type": "string",
+      "default": "#6366f1"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "planning",
+        "active",
+        "completed",
+        "paused"
+      ],
+      "default": "planning"
+    },
+    "budget": {
+      "type": "number"
+    },
+    "goal": {
+      "type": "string"
+    },
+    "objective": {
+      "type": "string"
+    },
+    "target_platforms": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "monthly_plan_id": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "client_id",
+    "name",
+    "start_date",
+    "end_date"
+  ],
+  "rls": {
+    "read": {},
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

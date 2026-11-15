@@ -1,0 +1,76 @@
+{
+  "name": "IncentiveTarget",
+  "type": "object",
+  "properties": {
+    "target_type": {
+      "type": "string",
+      "enum": [
+        "user",
+        "company"
+      ],
+      "default": "user"
+    },
+    "user_id": {
+      "type": "string"
+    },
+    "month": {
+      "type": "string"
+    },
+    "target_tasks": {
+      "type": "number",
+      "default": 0
+    },
+    "target_revenue": {
+      "type": "number",
+      "default": 0
+    },
+    "milestone_80_reward": {
+      "type": "number",
+      "default": 0
+    },
+    "milestone_100_reward": {
+      "type": "number",
+      "default": 0
+    },
+    "milestone_120_reward": {
+      "type": "number",
+      "default": 0
+    }
+  },
+  "required": [
+    "target_type",
+    "month"
+  ],
+  "rls": {
+    "read": {
+      "$or": [
+        {
+          "data.user_id": "{{user.id}}"
+        },
+        {
+          "data.target_type": "company"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}
